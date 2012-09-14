@@ -59,6 +59,7 @@ if !hasmapto("<Plug>GitHubLinkFileUrl")
   map <unique> <Leader>g <Plug>GitHubLinkFileUrl
 endif
 
-noremap <unique> <script> <Plug>GitHubLinkFileUrl <SID>FileUrl
-noremap <SID>FileUrl :echo <SID>FileUrl()<CR>
+noremap <unique> <script> <Plug>GitHubLinkFileUrl <SID>FileUrl <SID>Copy
+noremap <SID>FileUrl :redir @a <BAR> echo <SID>FileUrl() <BAR> redir END<CR>
+noremap <SID>Copy :call system('pbcopy', @a) <BAR> echo @a <CR>
 
